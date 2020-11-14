@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                   print('password is $password');
 
                   Navigator.pushNamedAndRemoveUntil(
-                      context, HomePage.id, ModalRoute.withName(''));
+                      context, HomePage.id, (Route<dynamic> route) => false);
                 },
                 children: [
                   DefaultTextFormInput(

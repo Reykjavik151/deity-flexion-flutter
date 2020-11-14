@@ -61,9 +61,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   String password = widget.passwordController.value.text;
                   print('email is $email');
                   print('password is $password');
-                  
+
                   Navigator.pushNamedAndRemoveUntil(
-                      context, HomePage.id, ModalRoute.withName(''));
+                      context, HomePage.id, (Route<dynamic> route) => false);
                 },
                 children: [
                   DefaultTextFormInput(
