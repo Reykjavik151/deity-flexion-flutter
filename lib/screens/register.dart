@@ -1,9 +1,14 @@
-import 'package:deity_flexion_app/components/line.dart';
 import 'package:flutter/material.dart';
+import 'package:deity_flexion_app/components/default_form.dart';
+import 'package:deity_flexion_app/components/default_text_form_field.dart';
+import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/constants.dart';
 
 class RegisterPage extends StatefulWidget {
   static String id = 'register_screen';
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -49,13 +54,31 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: DefaultForm(
+                onSubmit: () {
+                  String email = widget.emailController.value.text;
+                  String password = widget.passwordController.value.text;
+                  print('email is $email');
+                  print('password is $password');
+
+                  // Navigator.pushNamed(context, MainPage.id)
+                },
                 children: [
-                  Line(
-                    height: 12.0,
+                  DefaultTextFormInput(
+                    controller: widget.emailController,
+                    emptyValidateText: 'Email is required',
+                    keyboardType: TextInputType.emailAddress,
+                    hintText: 'Email',
+                  ),
+                  DefaultTextFormInput(
+                    controller: widget.passwordController,
+                    emptyValidateText: 'Password is required',
+                    keyboardType: TextInputType.emailAddress,
+                    hintText: 'Password',
+                    obscureText: true,
                   ),
                 ],
+                submitButtonText: 'Register',
               ),
             )
           ],
