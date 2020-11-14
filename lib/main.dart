@@ -1,3 +1,4 @@
+import 'package:deity_flexion_app/screens/home.dart';
 import 'package:deity_flexion_app/screens/login.dart';
 import 'package:deity_flexion_app/screens/register.dart';
 import 'package:deity_flexion_app/screens/welcome.dart';
@@ -24,6 +25,7 @@ class DeityFlexionApp extends StatelessWidget {
         WelcomePage.id: (context) => WelcomePage(),
         LoginPage.id: (context) => LoginPage(),
         RegisterPage.id: (context) => RegisterPage(),
+        HomePage.id: (context) => HomePage(),
       }
     );
   }

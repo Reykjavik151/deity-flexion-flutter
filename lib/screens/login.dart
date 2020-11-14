@@ -1,6 +1,7 @@
 import 'package:deity_flexion_app/components/default_text_form_field.dart';
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/constants.dart';
+import 'package:deity_flexion_app/screens/home.dart';
 import 'package:flutter/material.dart';
 
 // Widgets
@@ -63,7 +64,8 @@ class _LoginPageState extends State<LoginPage> {
                   print('email is $email');
                   print('password is $password');
 
-                  // Navigator.pushNamed(context, MainPage.id)
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, HomePage.id, ModalRoute.withName(''));
                 },
                 children: [
                   DefaultTextFormInput(
