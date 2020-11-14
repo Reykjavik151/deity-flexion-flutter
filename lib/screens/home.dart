@@ -1,4 +1,5 @@
 import 'package:deity_flexion_app/components/line.dart';
+import 'package:deity_flexion_app/components/section_button.dart';
 import 'package:deity_flexion_app/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -19,35 +20,59 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Hero(
-              tag: FIRST_LINE_HERO_TAG,
-              child: Line(
-                height: 12.0,
-                isCompleted: false,
-                margin: EdgeInsets.only(bottom: 12.0, right: 32.0),
+            Expanded(
+              child: Center(
+                child: SectionButton(
+                  icon: Icons.check,
+                  onPress: () {
+                    print('tasks pressed');
+                  },
+                ),
               ),
             ),
-            Hero(
-              tag: SECOND_LINE_HERO_TAG,
-              child: Line(
-                height: 32.0,
-                margin: EdgeInsets.only(bottom: 12.0),
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Hero(
+                  tag: FIRST_LINE_HERO_TAG,
+                  child: Line(
+                    height: 12.0,
+                    margin: EdgeInsets.only(bottom: 12.0),
+                  ),
+                ),
+                Hero(
+                  tag: SECOND_LINE_HERO_TAG,
+                  child: Line(
+                    height: 32.0,
+                    margin: EdgeInsets.only(bottom: 12.0),
+                  ),
+                ),
+                Hero(
+                  tag: THIRD_LINE_HERO_TAG,
+                  child: Line(
+                    height: 32.0,
+                    margin: EdgeInsets.only(bottom: 12.0),
+                  ),
+                ),
+                Hero(
+                  tag: FOURTH_LINE_HERO_TAG,
+                  child: Line(
+                    height: 12.0,
+                  ),
+                ),
+              ],
             ),
-            Hero(
-              tag: THIRD_LINE_HERO_TAG,
-              child: Line(
-                height: 32.0,
-                isCompleted: false,
-                margin: EdgeInsets.only(bottom: 12.0, right: 16.0),
-              ),
-            ),
-            Hero(
-              tag: FOURTH_LINE_HERO_TAG,
-              child: Line(
-                height: 12.0,
-                isCompleted: false,
-                margin: EdgeInsets.only(right: 64.0),
+            Expanded(
+              child: RotatedBox(
+                quarterTurns: 3,
+                child: Center(
+                  child: SectionButton(
+                    icon: Icons.note,
+                    onPress: () {
+                      print('notes pressed');
+                    },
+                  ),
+                ),
               ),
             ),
           ],
