@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 class DefaultForm extends StatefulWidget {
   final List<Widget> children;
   final String submitButtonText;
+  final Function onSubmit;
 
-  DefaultForm({this.children, this.submitButtonText});
+  DefaultForm({
+    @required this.children,
+    this.submitButtonText = '',
+    @required this.onSubmit,
+  });
 
   @override
   DefaultFormState createState() {
@@ -37,9 +42,7 @@ class DefaultFormState extends State<DefaultForm> {
             GestureDetector(
               onTap: () {
                 if (_formKey.currentState.validate()) {
-                  // If the form is valid, display a Snackbar.
-                  Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
+                  widget.onSubmit();
                 }
               },
               child: Line(

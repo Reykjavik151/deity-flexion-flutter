@@ -1,3 +1,4 @@
+import 'package:deity_flexion_app/components/default_text_form_field.dart';
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/constants.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,9 @@ import '../components/default_form.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_screen';
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -53,7 +57,29 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Expanded(
               child: DefaultForm(
-                children: [],
+                onSubmit: () {
+                  String email = widget.emailController.value.text;
+                  String password = widget.passwordController.value.text;
+                  print('email is $email');
+                  print('password is $password');
+
+                  // Navigator.pushNamed(context, MainPage.id)
+                },
+                children: [
+                  DefaultTextFormInput(
+                    controller: widget.emailController,
+                    emptyValidateText: 'Email is required',
+                    keyboardType: TextInputType.emailAddress,
+                    hintText: 'Email',
+                  ),
+                  DefaultTextFormInput(
+                    controller: widget.passwordController,
+                    emptyValidateText: 'Password is required',
+                    keyboardType: TextInputType.emailAddress,
+                    hintText: 'Password',
+                    obscureText: true,
+                  ),
+                ],
                 submitButtonText: 'Login',
               ),
             )

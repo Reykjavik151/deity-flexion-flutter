@@ -24,20 +24,27 @@ class WelcomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'DEITY',
-                      style: TextStyle(
-                        fontSize: 72.0,
-                        fontWeight: FontWeight.bold,
+                    Line(
+                      height: 18.0,
+                      margin: EdgeInsets.only(right: 80.0, bottom: 12.0),
+                      isCompleted: false,
+                    ),
+                    Line(
+                      height: 18.0,
+                      margin: EdgeInsets.only(right: 128.0),
+                      isCompleted: false,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0, left: 32.0),
+                      child: Text(
+                        'DEITY\nFLEXION',
+                        style: TextStyle(
+                          fontSize: 72.0,
+                          height: 0.85,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    Text(
-                      'FLEXION',
-                      style: TextStyle(
-                        fontSize: 72.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
                   ],
                 ),
               ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Line extends StatelessWidget {
   Line({
     this.backgroundColor = Colors.white,
-    @required this.height,
+    this.height,
     this.margin,
     this.isCompleted = true,
     this.child,
