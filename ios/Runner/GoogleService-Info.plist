@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>319139319526-cdnugc3d4fo9fl3bm9iarisuoem642vl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.319139319526-cdnugc3d4fo9fl3bm9iarisuoem642vl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCM7v-9659ponH4eWHuRxGUueaCsTrjXM4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>319139319526</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.cinder.deityFlexionApp</string>
+	<key>PROJECT_ID</key>
+	<string>deityflexion</string>
+	<key>STORAGE_BUCKET</key>
+	<string>deityflexion.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:319139319526:ios:4eb7f58411bc684d877527</string>
+	<key>DATABASE_URL</key>
+	<string>https://deityflexion.firebaseio.com</string>
+</dict>
+</plist>

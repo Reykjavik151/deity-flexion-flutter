@@ -4,10 +4,12 @@ import 'package:deity_flexion_app/screens/notes.dart';
 import 'package:deity_flexion_app/screens/register.dart';
 import 'package:deity_flexion_app/screens/tasks.dart';
 import 'package:deity_flexion_app/screens/welcome.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(DeityFlexionApp());
+  Firebase.initializeApp();
 }
 
 class DeityFlexionApp extends StatelessWidget {

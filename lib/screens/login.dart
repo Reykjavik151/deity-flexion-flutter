@@ -2,6 +2,7 @@ import 'package:deity_flexion_app/components/default_text_form_field.dart';
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/constants.dart';
 import 'package:deity_flexion_app/screens/home.dart';
+import 'package:deity_flexion_app/services/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 // Widgets
@@ -18,6 +19,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  void onLogin(String email, String password) async {
+    if (await FirebaseAuthHelper.login(email: email, password: password) !=
+        null) {
+      Navigator.pushNamedAndRemoveUntil(context, HomePage.id, (route) => false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   print('email is $email');
                   print('password is $password');
 
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, HomePage.id, (Route<dynamic> route) => false);
+                  onLogin(email, password);
                 },
                 children: [
                   DefaultTextFormInput(

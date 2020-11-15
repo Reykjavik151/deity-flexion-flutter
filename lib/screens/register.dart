@@ -1,4 +1,5 @@
 import 'package:deity_flexion_app/screens/home.dart';
+import 'package:deity_flexion_app/services/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:deity_flexion_app/components/default_form.dart';
 import 'package:deity_flexion_app/components/default_text_form_field.dart';
@@ -16,6 +17,13 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  onRegister(String email, String password) async {
+    if (await FirebaseAuthHelper.register(email: email, password: password) !=
+        null) {
+      Navigator.pushNamedAndRemoveUntil(context, HomePage.id, (route) => false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,8 +70,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   print('email is $email');
                   print('password is $password');
 
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, HomePage.id, (Route<dynamic> route) => false);
+                  onRegister(email, password);
                 },
                 children: [
                   DefaultTextFormInput(

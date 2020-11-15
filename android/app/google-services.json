@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "319139319526",
+    "firebase_url": "https://deityflexion.firebaseio.com",
+    "project_id": "deityflexion",
+    "storage_bucket": "deityflexion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319139319526:android:9bf622b0b33c3700877527",
+        "android_client_info": {
+          "package_name": "com.cinder.deity_flexion_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319139319526-t0ti9f9aihkrlfapa7af8sjp7vklfoeh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB3-vfftmpxi6SLZpkOuKBXv_gKYQXt-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319139319526-t0ti9f9aihkrlfapa7af8sjp7vklfoeh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
