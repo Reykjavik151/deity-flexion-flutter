@@ -1,6 +1,7 @@
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/components/section_button.dart';
 import 'package:deity_flexion_app/constants.dart';
+import 'package:deity_flexion_app/screens/tasks.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,11 +23,14 @@ class _HomePageState extends State<HomePage> {
           children: [
             Expanded(
               child: Center(
-                child: SectionButton(
-                  icon: Icons.check,
-                  onPress: () {
-                    print('tasks pressed');
-                  },
+                child: Hero(
+                  tag: TASKS_HERO_TAG,
+                  child: SectionButton(
+                    icon: Icons.check,
+                    onPress: () {
+                      Navigator.pushNamed(context, TasksPage.id);
+                    },
+                  ),
                 ),
               ),
             ),

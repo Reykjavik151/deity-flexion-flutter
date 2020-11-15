@@ -1,6 +1,7 @@
 import 'package:deity_flexion_app/screens/home.dart';
 import 'package:deity_flexion_app/screens/login.dart';
 import 'package:deity_flexion_app/screens/register.dart';
+import 'package:deity_flexion_app/screens/tasks.dart';
 import 'package:deity_flexion_app/screens/welcome.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,7 @@ class DeityFlexionApp extends StatelessWidget {
         LoginPage.id: (context) => LoginPage(),
         RegisterPage.id: (context) => RegisterPage(),
         HomePage.id: (context) => HomePage(),
+        TasksPage.id: (context) => TasksPage(),
       }
     );
   }
