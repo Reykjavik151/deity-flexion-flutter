@@ -1,6 +1,7 @@
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/components/section_button.dart';
 import 'package:deity_flexion_app/constants.dart';
+import 'package:deity_flexion_app/screens/notes.dart';
 import 'package:deity_flexion_app/screens/tasks.dart';
 import 'package:flutter/material.dart';
 
@@ -70,11 +71,14 @@ class _HomePageState extends State<HomePage> {
               child: RotatedBox(
                 quarterTurns: 3,
                 child: Center(
-                  child: SectionButton(
-                    icon: Icons.note,
-                    onPress: () {
-                      print('notes pressed');
-                    },
+                  child: Hero(
+                    tag: NOTES_HERO_TAG,
+                    child: SectionButton(
+                      icon: Icons.note,
+                      onPress: () {
+                        Navigator.pushNamed(context, NotesPage.id);
+                      },
+                    ),
                   ),
                 ),
               ),
