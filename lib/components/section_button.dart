@@ -8,7 +8,7 @@ class SectionButton extends StatelessWidget {
   SectionButton({
     @required this.icon,
     @required this.onPress,
-    this.size = 250.0,
+    this.size = 200.0,
   });
 
   @override

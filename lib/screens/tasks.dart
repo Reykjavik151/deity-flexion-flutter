@@ -30,14 +30,18 @@ class _TasksPageState extends State<TasksPage> {
                       bottomLeft: Radius.circular(20.0))),
               child: SafeArea(
                 bottom: false,
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text('Tasks',
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Tasks',
                       style: TextStyle(
                         fontSize: 32.0,
                         color: Colors.lightBlueAccent[700],
-                      ))
-                ]),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
