@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class FirebaseAuthHelper {
   static Future<UserCredential> register({String email, String password}) async {
@@ -14,5 +13,9 @@ class FirebaseAuthHelper {
         .signInWithEmailAndPassword(email: email, password: password);
 
     return newUser;
+  }
+
+  static User getCurrentUser() {
+    return FirebaseAuth.instance.currentUser;
   }
 }
