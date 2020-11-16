@@ -25,10 +25,12 @@ class _TasksAddPageState extends State<TasksAddPage> {
               child: Container(
                 padding: EdgeInsets.only(bottom: 16.0),
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(20.0),
-                        bottomLeft: Radius.circular(20.0))),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(20.0),
+                    bottomLeft: Radius.circular(20.0),
+                  ),
+                ),
                 child: SafeArea(
                   bottom: false,
                   child: Row(
@@ -47,7 +49,6 @@ class _TasksAddPageState extends State<TasksAddPage> {
               ),
             ),
           ),
-
           Hero(
             tag: FIRST_LINE_HERO_TAG,
             child: Line(
