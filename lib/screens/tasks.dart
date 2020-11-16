@@ -1,5 +1,6 @@
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/constants.dart';
+import 'package:deity_flexion_app/screens/tasks_add.dart';
 import 'package:flutter/material.dart';
 
 class TasksPage extends StatefulWidget {
@@ -38,14 +39,30 @@ class _TasksPageState extends State<TasksPage> {
                         fontSize: 32.0,
                         color: Colors.lightBlueAccent[700],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.pushNamed(context, TasksAddPage.id);
+              },
+              child: Icon(
+                Icons.add,
+                size: 32.0,
+                color: Colors.lightBlueAccent[700],
+              ),
+              backgroundColor: Colors.white,
+            ),
+          ),
           Expanded(
-            child: ListView(),
+            child: ListView(
+              children: [],
+            ),
           ),
           Hero(
             tag: FIRST_LINE_HERO_TAG,
