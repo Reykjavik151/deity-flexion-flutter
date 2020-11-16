@@ -1,16 +1,15 @@
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/constants.dart';
-import 'package:deity_flexion_app/screens/notes_add.dart';
 import 'package:flutter/material.dart';
 
-class NotesPage extends StatefulWidget {
-  static String id = 'notes_screen';
+class NotesAddPage extends StatefulWidget {
+  static String id = 'notes_add_screen';
 
   @override
-  _NotesPageState createState() => _NotesPageState();
+  _NotesAddPageState createState() => _NotesAddPageState();
 }
 
-class _NotesPageState extends State<NotesPage> {
+class _NotesAddPageState extends State<NotesAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +18,6 @@ class _NotesPageState extends State<NotesPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-
           Hero(
             tag: FIRST_LINE_HERO_TAG,
             child: Line(
@@ -54,7 +52,7 @@ class _NotesPageState extends State<NotesPage> {
             padding: const EdgeInsets.only(bottom: 16.0),
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.pushNamed(context, NotesAddPage.id);
+                // Navigator.pushNamed(context, TasksAddPage.id);
               },
               child: Icon(
                 Icons.add,
@@ -81,7 +79,7 @@ class _NotesPageState extends State<NotesPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Notes',
+                        'Add Note',
                         style: TextStyle(
                           fontSize: 32.0,
                           color: Colors.lightBlueAccent[700],
@@ -99,3 +97,4 @@ class _NotesPageState extends State<NotesPage> {
     );
   }
 }
+

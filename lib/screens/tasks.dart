@@ -21,26 +21,29 @@ class _TasksPageState extends State<TasksPage> {
         children: [
           Hero(
             tag: TASKS_HERO_TAG,
-            child: Container(
-              padding: EdgeInsets.only(bottom: 16.0),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(20.0),
-                      bottomLeft: Radius.circular(20.0))),
-              child: SafeArea(
-                bottom: false,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Tasks',
-                      style: TextStyle(
-                        fontSize: 32.0,
-                        color: Colors.lightBlueAccent[700],
+            child: Material(
+              color: Colors.transparent,
+              child: Container(
+                padding: EdgeInsets.only(bottom: 16.0),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(20.0),
+                        bottomLeft: Radius.circular(20.0))),
+                child: SafeArea(
+                  bottom: false,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Tasks',
+                        style: TextStyle(
+                          fontSize: 32.0,
+                          color: Colors.lightBlueAccent[700],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
