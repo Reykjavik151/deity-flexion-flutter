@@ -1,6 +1,7 @@
 import 'package:deity_flexion_app/components/default_progress_indicator.dart';
 import 'dart:async';
 import 'package:deity_flexion_app/components/line.dart';
+import 'package:deity_flexion_app/components/tasks_list_view.dart';
 import 'package:deity_flexion_app/constants.dart';
 import 'package:deity_flexion_app/data/task.dart';
 import 'package:deity_flexion_app/screens/tasks_add.dart';
@@ -98,9 +99,7 @@ class _TasksPageState extends State<TasksPage> {
               ),
             ),
             Expanded(
-              child: ListView(
-                children: [],
-              ),
+              child: TasksListView(tasks: widget.tasks),
             ),
             Hero(
               tag: FIRST_LINE_HERO_TAG,

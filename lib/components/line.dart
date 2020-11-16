@@ -6,6 +6,7 @@ class Line extends StatelessWidget {
     this.height,
     this.margin,
     this.isCompleted = true,
+    this.borderRadius = 10.0,
     this.child,
   });
 
@@ -13,6 +14,7 @@ class Line extends StatelessWidget {
   final double height;
   final bool isCompleted;
   final EdgeInsets margin;
+  final double borderRadius;
   final Widget child;
 
   @override
@@ -23,8 +25,8 @@ class Line extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: !this.isCompleted
             ? BorderRadius.only(
-                topRight: Radius.circular(10.0),
-                bottomRight: Radius.circular(10.0))
+                topRight: Radius.circular(this.borderRadius),
+                bottomRight: Radius.circular(this.borderRadius))
             : null,
         color: this.backgroundColor,
       ),

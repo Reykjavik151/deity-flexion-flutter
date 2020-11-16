@@ -18,7 +18,7 @@ class FirebaseStorageHelper {
         new Task(
           id: element.id,
           status: StatusHelper.getStatusByString(elementData['status']),
-          ownerId: elementData['ownerId'],
+          ownerId: elementData['ownerUid'],
           title: elementData['title'],
           description: elementData['description'],
           createdAt: elementData['createdAt'],
@@ -27,5 +27,23 @@ class FirebaseStorageHelper {
     });
 
     return resultTasks;
+  }
+
+  static Future<Task> addTask({ Task task, String userUid }) async {
+    CollectionReference tasksRef =
+      FirebaseFirestore.instance.collection('tasks');
+
+    DocumentReference doc = await tasksRef.add({
+      'status': StatusHelper.getStringByStatus(task.status),
+      'ownerUid': userUid,
+      'title': task.title,
+      'description': task.description,
+      'createdAt': DateTime.now().toIso8601String(),
+    });
+
+    DocumentSnapshot snapshot = await doc.get();
+    task.id = snapshot.id;
+
+    return task;
   }
 }
