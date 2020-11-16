@@ -18,6 +18,9 @@ class _NotesAddPageState extends State<NotesAddPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Expanded(
+            child: ListView(),
+          ),
           Hero(
             tag: FIRST_LINE_HERO_TAG,
             child: Line(
@@ -43,23 +46,6 @@ class _NotesAddPageState extends State<NotesAddPage> {
             tag: FOURTH_LINE_HERO_TAG,
             child: Line(
               height: 12.0,
-            ),
-          ),
-          Expanded(
-            child: ListView(),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 16.0),
-            child: FloatingActionButton(
-              onPressed: () {
-                // Navigator.pushNamed(context, TasksAddPage.id);
-              },
-              child: Icon(
-                Icons.add,
-                size: 32.0,
-                color: Colors.lightBlueAccent[700],
-              ),
-              backgroundColor: Colors.white,
             ),
           ),
           Hero(
