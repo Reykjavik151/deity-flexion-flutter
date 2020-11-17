@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:deity_flexion_app/data/note.dart';
 import 'package:deity_flexion_app/data/status.dart';
 import 'package:deity_flexion_app/data/task.dart';
 
@@ -31,6 +32,33 @@ class FirebaseStorageHelper {
     return resultTasks;
   }
 
+  static Future<List<Note>> getNotesById(String uid) async {
+    CollectionReference notesRef =
+        FirebaseFirestore.instance.collection('notes');
+
+    List<Note> resultNotes = [];
+
+    QuerySnapshot snapshots = await notesRef
+        .where('ownerUid', isEqualTo: uid)
+        .orderBy('createdAt')
+        .get();
+
+    snapshots.docs.forEach((element) {
+      Map<String, dynamic> elementData = element.data();
+      resultNotes.add(
+        new Note(
+          id: element.id,
+          ownerId: elementData['ownerUid'],
+          title: elementData['title'],
+          body: elementData['body'],
+          createdAt: elementData['createdAt'],
+        ),
+      );
+    });
+
+    return resultNotes;
+  }
+
   static Future<Task> addTask({Task task}) async {
     CollectionReference tasksRef =
         FirebaseFirestore.instance.collection('tasks');
@@ -49,6 +77,22 @@ class FirebaseStorageHelper {
     return task;
   }
 
+  static Future<Note> addNote({Note note}) async {
+    CollectionReference notesRef = FirebaseFirestore.instance.collection('notes');
+
+    DocumentReference doc = await notesRef.add({
+      'ownerUid': note.ownerId,
+      'title': note.title,
+      'body': note.body,
+      'createdAt': note.createdAt,
+    });
+
+    DocumentSnapshot snapshot = await doc.get();
+    note.id = snapshot.id;
+
+    return note;
+  }
+
   static Future<Task> updateTask({Task task}) async {
     DocumentReference taskRef =
         FirebaseFirestore.instance.collection('tasks').doc(task.id);
@@ -63,8 +107,27 @@ class FirebaseStorageHelper {
     return task;
   }
 
-  static Future<bool> deleteTask({ String taskId }) async {
+  static Future<Note> updateNote({Note note}) async {
+    DocumentReference noteRef =
+      FirebaseFirestore.instance.collection('note').doc(note.id);
+
+    await noteRef.update({
+      'ownerUid': note.ownerId,
+      'title': note.title,
+      'body': note.body,
+    });
+
+    return note;
+  }
+
+  static Future<bool> deleteTask({String taskId}) async {
     await FirebaseFirestore.instance.collection('tasks').doc(taskId).delete();
+
+    return true;
+  }
+
+  static Future<bool> deleteNote({String noteId}) async {
+    await FirebaseFirestore.instance.collection('notes').doc(noteId).delete();
 
     return true;
   }
