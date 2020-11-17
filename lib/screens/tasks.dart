@@ -6,6 +6,7 @@ import 'package:deity_flexion_app/constants.dart';
 import 'package:deity_flexion_app/data/status.dart';
 import 'package:deity_flexion_app/data/task.dart';
 import 'package:deity_flexion_app/screens/tasks_add.dart';
+import 'package:deity_flexion_app/screens/tasks_edit.dart';
 import 'package:deity_flexion_app/services/firebase_auth.dart';
 import 'package:deity_flexion_app/services/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -73,6 +74,15 @@ class _TasksPageState extends State<TasksPage> {
     await FirebaseStorageHelper.updateTask(task: task);
   }
 
+  onTaskLongPress(Task task) async {
+    final isNeedsRefresh =
+        await Navigator.pushNamed(context, TasksEditPage.id, arguments: task);
+
+    if (isNeedsRefresh != null) {
+      this.getTasks();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     print(widget.tasks);
@@ -117,7 +127,11 @@ class _TasksPageState extends State<TasksPage> {
                   ),
                 ),
                 Expanded(
-                  child: TasksListView(tasks: widget.tasks, onTaskPress: this.onTaskPress),
+                  child: TasksListView(
+                    tasks: widget.tasks,
+                    onTaskPress: this.onTaskPress,
+                    onTaskLongPress: this.onTaskLongPress,
+                  ),
                 ),
                 Hero(
                   tag: FIRST_LINE_HERO_TAG,
@@ -159,7 +173,7 @@ class _TasksPageState extends State<TasksPage> {
               child: FloatingActionButton(
                 onPressed: () async {
                   dynamic titleDescriptionList =
-                  await Navigator.pushNamed(context, TasksAddPage.id);
+                      await Navigator.pushNamed(context, TasksAddPage.id);
                   if (titleDescriptionList is List<String>) {
                     addTask(Task(
                       id: '',

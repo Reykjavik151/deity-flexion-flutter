@@ -5,6 +5,7 @@ import 'package:deity_flexion_app/screens/notes_add.dart';
 import 'package:deity_flexion_app/screens/register.dart';
 import 'package:deity_flexion_app/screens/tasks.dart';
 import 'package:deity_flexion_app/screens/tasks_add.dart';
+import 'package:deity_flexion_app/screens/tasks_edit.dart';
 import 'package:deity_flexion_app/screens/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,7 @@ class DeityFlexionApp extends StatelessWidget {
         HomePage.id: (context) => HomePage(),
         TasksPage.id: (context) => TasksPage(),
         TasksAddPage.id: (context) => TasksAddPage(),
+        TasksEditPage.id: (context) => TasksEditPage(),
         NotesPage.id: (context) => NotesPage(),
         NotesAddPage.id: (context) => NotesAddPage(),
       }
