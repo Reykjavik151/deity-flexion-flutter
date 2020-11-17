@@ -6,6 +6,7 @@ import 'package:deity_flexion_app/components/notes_list_view.dart';
 import 'package:deity_flexion_app/constants.dart';
 import 'package:deity_flexion_app/data/note.dart';
 import 'package:deity_flexion_app/screens/notes_add.dart';
+import 'package:deity_flexion_app/screens/notes_edit.dart';
 import 'package:deity_flexion_app/services/firebase_auth.dart';
 import 'package:deity_flexion_app/services/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -58,6 +59,15 @@ class _NotesPageState extends State<NotesPage> {
     });
   }
 
+  onNoteLongPress(Note note) async {
+    final isNeedsRefresh =
+    await Navigator.pushNamed(context, NotesEditPage.id, arguments: note);
+
+    if (isNeedsRefresh != null) {
+      this.getNotes();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
@@ -100,6 +110,7 @@ class _NotesPageState extends State<NotesPage> {
               Expanded(
                 child: NotesListView(
                   notes: widget.notes,
+                  onNoteLongPress: this.onNoteLongPress,
                 ),
               ),
               Hero(

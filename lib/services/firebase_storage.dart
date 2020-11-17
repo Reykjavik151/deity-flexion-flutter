@@ -109,7 +109,7 @@ class FirebaseStorageHelper {
 
   static Future<Note> updateNote({Note note}) async {
     DocumentReference noteRef =
-      FirebaseFirestore.instance.collection('note').doc(note.id);
+      FirebaseFirestore.instance.collection('notes').doc(note.id);
 
     await noteRef.update({
       'ownerUid': note.ownerId,

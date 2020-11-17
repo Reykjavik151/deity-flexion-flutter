@@ -17,12 +17,6 @@ class TasksEditPage extends StatefulWidget {
 }
 
 class _TasksEditPageState extends State<TasksEditPage> {
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   onEditTask(Task task) async {
     String title = widget.titleController.value.text;
     String description =
@@ -43,7 +37,6 @@ class _TasksEditPageState extends State<TasksEditPage> {
   @override
   Widget build(BuildContext context) {
     final Task task = ModalRoute.of(context).settings.arguments as Task;
-    print(task);
     widget.titleController.value = TextEditingValue(text: task.title);
     widget.descriptionController = TextEditingController(text: task.description);
 
