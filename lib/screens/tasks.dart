@@ -46,11 +46,31 @@ class _TasksPageState extends State<TasksPage> {
   }
 
   addTask(Task task) async {
+    this.setState(() {
+      widget.isLoading = true;
+    });
+
     Task newTask = await FirebaseStorageHelper.addTask(task: task);
 
     this.setState(() {
       widget.tasks.add(newTask);
+      widget.isLoading = false;
     });
+  }
+
+  onTaskPress(Task task) async {
+    this.setState(() {
+      switch (task.status) {
+        case Status.completed:
+          task.status = Status.none;
+          break;
+        case Status.none:
+          task.status = Status.completed;
+          break;
+      }
+    });
+
+    await FirebaseStorageHelper.updateTask(task: task);
   }
 
   @override
@@ -97,7 +117,7 @@ class _TasksPageState extends State<TasksPage> {
                   ),
                 ),
                 Expanded(
-                  child: TasksListView(tasks: widget.tasks),
+                  child: TasksListView(tasks: widget.tasks, onTaskPress: this.onTaskPress),
                 ),
                 Hero(
                   tag: FIRST_LINE_HERO_TAG,

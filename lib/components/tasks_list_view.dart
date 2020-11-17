@@ -5,10 +5,17 @@ import 'package:flutter/material.dart';
 class TasksListView extends StatelessWidget {
   List<Widget> tasks;
 
-  TasksListView({ List<Task> tasks }) {
+  TasksListView(
+      {List<Task> tasks, Function onTaskPress, Function onTaskLongPress}) {
     this.tasks = [];
     tasks.forEach((task) {
-      this.tasks.add(TaskView(task: task));
+      this.tasks.add(
+            TaskView(
+              task: task,
+              onPress: onTaskPress,
+              onLongPress: onTaskLongPress,
+            ),
+          );
     });
   }
 
