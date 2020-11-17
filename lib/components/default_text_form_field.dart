@@ -7,6 +7,8 @@ class DefaultTextFormInput extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final TextEditingController controller;
+  final int minLines;
+  final int maxLines;
 
   DefaultTextFormInput({
     this.controller = null,
@@ -14,6 +16,8 @@ class DefaultTextFormInput extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.hintText = '',
     this.obscureText = false,
+    this.minLines = 1,
+    this.maxLines = 1,
   });
 
   @override
@@ -21,6 +25,9 @@ class DefaultTextFormInput extends StatelessWidget {
     return Line(
       margin: EdgeInsets.only(bottom: 16.0),
       child: TextFormField(
+        autocorrect: false,
+        minLines: this.minLines,
+        maxLines: this.maxLines,
         controller: this.controller,
         cursorWidth: 6.0,
         validator: (value) {

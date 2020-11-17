@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/components/tasks_list_view.dart';
 import 'package:deity_flexion_app/constants.dart';
+import 'package:deity_flexion_app/data/status.dart';
 import 'package:deity_flexion_app/data/task.dart';
 import 'package:deity_flexion_app/screens/tasks_add.dart';
 import 'package:deity_flexion_app/services/firebase_auth.dart';
@@ -35,11 +36,20 @@ class _TasksPageState extends State<TasksPage> {
       widget.isLoading = true;
     });
 
-    List<Task> newTasks = await FirebaseStorageHelper.getTasksByUid(widget.currentUser.uid);
+    List<Task> newTasks =
+        await FirebaseStorageHelper.getTasksByUid(widget.currentUser.uid);
 
     this.setState(() {
       widget.tasks = newTasks;
       widget.isLoading = false;
+    });
+  }
+
+  addTask(Task task) async {
+    Task newTask = await FirebaseStorageHelper.addTask(task: task);
+
+    this.setState(() {
+      widget.tasks.add(newTask);
     });
   }
 
@@ -87,8 +97,19 @@ class _TasksPageState extends State<TasksPage> {
             Padding(
               padding: const EdgeInsets.only(top: 16.0),
               child: FloatingActionButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, TasksAddPage.id);
+                onPressed: () async {
+                  dynamic titleDescriptionList =
+                      await Navigator.pushNamed(context, TasksAddPage.id);
+                  if (titleDescriptionList is List<String>) {
+                    addTask(Task(
+                      id: '',
+                      ownerId: widget.currentUser.uid,
+                      status: Status.none,
+                      title: titleDescriptionList[0],
+                      description: titleDescriptionList[1],
+                      createdAt: DateTime.now().toIso8601String(),
+                    ));
+                  }
                 },
                 child: Icon(
                   Icons.add,
@@ -111,6 +132,7 @@ class _TasksPageState extends State<TasksPage> {
             Hero(
               tag: SECOND_LINE_HERO_TAG,
               child: Line(
+                backgroundColor: Colors.white70,
                 height: 32.0,
                 margin: EdgeInsets.only(bottom: 12.0),
               ),
@@ -119,6 +141,7 @@ class _TasksPageState extends State<TasksPage> {
               tag: THIRD_LINE_HERO_TAG,
               child: Line(
                 height: 32.0,
+                backgroundColor: Colors.white70,
                 margin: EdgeInsets.only(bottom: 12.0),
               ),
             ),

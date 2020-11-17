@@ -11,11 +11,12 @@ class TaskView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isCompleted = task.status == Status.completed;
-    final double rightPadding = !isCompleted ? 80.0 : 16.0;
+    final double rightPadding = isCompleted ? 80.0 : 16.0;
 
     return Line(
-        isCompleted: !isCompleted,
-        margin: isCompleted ? EdgeInsets.only(right: 64.0, top: 16.0) : null,
+        isCompleted: isCompleted,
+        backgroundColor: isCompleted ? Colors.white70 : Colors.white,
+        margin: EdgeInsets.only(right: isCompleted ? 0.0 : 64.0, top: 16.0),
         borderRadius: 30.0,
         child: Padding(
           padding: EdgeInsets.only(
@@ -24,10 +25,14 @@ class TaskView extends StatelessWidget {
             children: [
               Text(
                 task.title,
-                style: TextStyle(fontSize: 26.0, color: Colors.black),
+                style: TextStyle(
+                  fontSize: 26.0,
+                  color: Colors.black,
+                ),
               ),
               Text(
                 task.description,
+                textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16.0, color: Colors.black54),
               )
             ],
