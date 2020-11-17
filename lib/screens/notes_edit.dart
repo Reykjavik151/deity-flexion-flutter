@@ -18,7 +18,6 @@ class NotesEditPage extends StatefulWidget {
 
 class _NotesEditPageState extends State<NotesEditPage> {
   onEditNote(Note note) async {
-    print(note.id);
     String title = widget.titleController.value.text;
     String body = widget.bodyController.value.text;
 
@@ -56,7 +55,7 @@ class _NotesEditPageState extends State<NotesEditPage> {
                     shrinkWrap: true,
                     padding: EdgeInsets.only(top: 16.0),
                     children: [
-                      SizedBox(height: 16.0),
+                      SizedBox(height: 96.0),
                       GestureDetector(
                         onTap: () {
                           onDeleteNote(note);

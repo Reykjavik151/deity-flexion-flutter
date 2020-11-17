@@ -1,9 +1,14 @@
+import 'package:deity_flexion_app/components/default_form.dart';
+import 'package:deity_flexion_app/components/default_text_form_field.dart';
 import 'package:deity_flexion_app/components/line.dart';
 import 'package:deity_flexion_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class NotesAddPage extends StatefulWidget {
   static String id = 'notes_add_screen';
+
+  TextEditingController titleController = TextEditingController();
+  TextEditingController bodyController = TextEditingController();
 
   @override
   _NotesAddPageState createState() => _NotesAddPageState();
@@ -19,7 +24,7 @@ class _NotesAddPageState extends State<NotesAddPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            child: ListView(),
+            child: Container(),
           ),
           Hero(
             tag: FIRST_LINE_HERO_TAG,
@@ -47,6 +52,58 @@ class _NotesAddPageState extends State<NotesAddPage> {
             child: Line(
               height: 12.0,
             ),
+          ),
+          ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.only(top: 16.0),
+            children: [
+              Container(
+                margin: EdgeInsets.only(bottom: 16.0),
+                child: DefaultForm(
+                  onSubmit: () {
+                    String title = widget.titleController.value.text;
+                    String body =
+                        widget.bodyController.value.text;
+
+                    Navigator.pop(context, [title, body]);
+                  },
+                  submitButtonText: 'Save',
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Title',
+                        style: TextStyle(
+                          fontSize: 32.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    DefaultTextFormInput(
+                      controller: widget.titleController,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Body',
+                        style: TextStyle(
+                          fontSize: 32.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    DefaultTextFormInput(
+                      controller: widget.bodyController,
+                      minLines: 3,
+                      maxLines: 8,
+                      keyboardType: TextInputType.multiline,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
           Hero(
             tag: NOTES_HERO_TAG,
@@ -77,7 +134,6 @@ class _NotesAddPageState extends State<NotesAddPage> {
               ),
             ),
           ),
-
         ],
       ),
     );

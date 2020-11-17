@@ -14,6 +14,7 @@ class NoteView extends StatelessWidget {
       onLongPress: () => this.onLongPress(this.note),
       child: Line(
           borderRadius: 30.0,
+          margin: EdgeInsets.only(bottom: 32.0),
           child: Padding(
             padding: EdgeInsets.only(
                 left: 16.0, right: 16.0, top: 8.0, bottom: 8.0),

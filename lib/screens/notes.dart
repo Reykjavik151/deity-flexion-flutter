@@ -61,7 +61,7 @@ class _NotesPageState extends State<NotesPage> {
 
   onNoteLongPress(Note note) async {
     final isNeedsRefresh =
-    await Navigator.pushNamed(context, NotesEditPage.id, arguments: note);
+        await Navigator.pushNamed(context, NotesEditPage.id, arguments: note);
 
     if (isNeedsRefresh != null) {
       this.getNotes();
@@ -151,8 +151,18 @@ class _NotesPageState extends State<NotesPage> {
           child: Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
             child: FloatingActionButton(
-              onPressed: () {
-                Navigator.pushNamed(context, NotesAddPage.id);
+              onPressed: () async {
+                dynamic titleDescriptionList =
+                    await Navigator.pushNamed(context, NotesAddPage.id);
+                if (titleDescriptionList is List<String>) {
+                  this.addNote(Note(
+                    id: '',
+                    ownerId: widget.currentUser.uid,
+                    title: titleDescriptionList[0],
+                    body: titleDescriptionList[1],
+                    createdAt: DateTime.now().toIso8601String(),
+                  ));
+                }
               },
               child: Icon(
                 Icons.add,
