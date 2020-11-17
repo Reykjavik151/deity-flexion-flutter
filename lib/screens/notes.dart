@@ -26,14 +26,12 @@ class NotesPage extends StatefulWidget {
 class _NotesPageState extends State<NotesPage> {
   @override
   void initState() {
-    print('init state');
     super.initState();
 
     Timer(Duration(milliseconds: 300), () => this.getNotes());
   }
 
   getNotes() async {
-    print('get notes');
     this.setState(() {
       widget.isLoading = true;
     });
