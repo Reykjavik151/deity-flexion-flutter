@@ -153,7 +153,7 @@ class _TasksPageState extends State<TasksPage> {
                 },
                 child: Icon(
                   Icons.add,
-                  size: 32.0,
+                  size: 40.0,
                   color: Colors.lightBlueAccent[700],
                 ),
                 backgroundColor: Colors.white,
